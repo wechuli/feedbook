@@ -34,5 +34,5 @@ const PORT = process.env.PORT || 8090;
 
 // listen on the specified port
 app.listen(PORT, () => {
-    console.info(`Server running on port ${PORT}`)
+    console.info(`Server running on port ${PORT}`);
 })
