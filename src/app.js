@@ -17,19 +17,22 @@ app.use(express.urlencoded({
     extended: false
 }))
 
+// Connect to MongoDB database
+
+
+
+
+// Custom Route Handlers
 
 
 
 
 
-
-
-
-
-
-
+// Get the port set in the environment
 const PORT = process.env.PORT || 8090;
 
+
+// listen on the specified port
 app.listen(PORT, () => {
     console.info(`Server running on port ${PORT}`)
 })
