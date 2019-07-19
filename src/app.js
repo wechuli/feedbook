@@ -26,6 +26,14 @@ app.use(express.urlencoded({
 
 
 
+//Default 404 page
+
+app.use((req, res) => {
+    res.status(404).json({
+        error: true,
+        message: "Route not found"
+    })
+})
 
 
 // Get the port set in the environment
