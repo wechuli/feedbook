@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "feedbook app",
   "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
   "repository": "https://github.com/wechuli/feedbook-backend.git",
   "author": "Wechuli <wechulipaul@yahoo.com>",
   "license": "MIT",
