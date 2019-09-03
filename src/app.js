@@ -9,6 +9,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 //Instantiate the app
 const app = express();
 
+
 // Add necessary middleware
 app.use(morgan("dev"));
 app.use(helmet());
@@ -34,7 +35,7 @@ app.use((req, res) => {
 });
 
 // passport oauth
-passport.use(new GoogleStrategy())
+//passport.use(new GoogleStrategy())
 
 // Get the port set in the environment
 const PORT = process.env.PORT || 8090;
