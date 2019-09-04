@@ -24,15 +24,6 @@ app.use(
 
 // Custom Route Handlers
 
-//Default 404 page
-
-app.use((req, res) => {
-  res.status(404).json({
-    error: true,
-    message: "Route not found"
-  });
-});
-
 // passport oauth
 passport.use(
   new GoogleStrategy(
@@ -41,11 +32,32 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "/auth/google/callback"
     },
-    accessToken => {
-      console.log(accessToken);
+    (accessToken, refreshToken, profile, done) => {
+      console.log('access token', accessToken);
+      console.log('refresh token',refreshToken);
+      console.log('profile',profile);
     }
   )
 );
+
+//auth flow handler
+app.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"]
+  })
+);
+
+app.get("/auth/google/callback", passport.authenticate("google"));
+
+//Default 404 page
+
+app.use((req, res) => {
+  res.status(404).json({
+    error: true,
+    message: "Route not found"
+  });
+});
 
 // Get the port set in the environment
 const PORT = process.env.PORT || 8090;
