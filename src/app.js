@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 
-require("./helpers/authHelper"); // requiring passport
+require("./services/auth"); // requiring passport
 
 //Instantiate the app
 const app = express();
