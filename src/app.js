@@ -4,8 +4,10 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
+const mongoose = require("mongoose");
 
-require("./services/auth"); // requiring passport
+require('./models/User.model');
+require("./services/authService"); // requiring passport
 
 //Instantiate the app
 const app = express();
@@ -22,6 +24,16 @@ app.use(
 );
 
 // Connect to MongoDB database
+mongoose
+  .connect(process.env.MONGO_DB_CONN_STRING, {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useFindAndModify: false
+  })
+  .then(() => {
+    console.info("Database successfully connected");
+  })
+  .catch(error => console.log(error));
 
 // Custom Route Handlers
 
@@ -41,5 +53,5 @@ const PORT = process.env.PORT || 8090;
 
 // listen on the specified port
 app.listen(8090, () => {
-  console.info(`Server running on port ${PORT}`);
+  console.info(`Server running on port 8090`);
 });
