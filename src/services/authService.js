@@ -19,7 +19,7 @@ passport.use(
       try {
         // check to see if the person has already logged in
         const existingUser = await User.findOne({ googleID: profile.id });
-
+        console.log(profile);
         if (!existingUser) {
           const newUser = new User({
             googleID: profile.id,

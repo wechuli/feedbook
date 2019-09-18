@@ -3,11 +3,11 @@ const express = require("express");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const cors = require("cors");
-const authRoutes = require("./routes/authRoutes");
+const passport = require("passport");
 const mongoose = require("mongoose");
-
-require('./models/User.model');
+require("./models/User.model");
 require("./services/authService"); // requiring passport
+const authRoutes = require("./routes/authRoutes");
 
 //Instantiate the app
 const app = express();
@@ -22,8 +22,10 @@ app.use(
     extended: false
   })
 );
+app.use(passport.initialize());
 
 // Connect to MongoDB database
+mongoose.Promise = global.Promise;
 mongoose
   .connect(process.env.MONGO_DB_CONN_STRING, {
     useCreateIndex: true,
