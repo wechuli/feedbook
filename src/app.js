@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const passport = require("passport");
 const mongoose = require("mongoose");
+const cookieSession = require("cookie-session");
 require("./models/User.model");
 require("./services/authService"); // requiring passport
 const authRoutes = require("./routes/authRoutes");
@@ -13,6 +14,7 @@ const authRoutes = require("./routes/authRoutes");
 const app = express();
 
 // Add necessary middleware
+
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
@@ -22,7 +24,16 @@ app.use(
     extended: false
   })
 );
+
+// setting the cookie session
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000, //in milliseconds
+    keys: [process.env.COOKIE_KEY]
+  })
+);
 app.use(passport.initialize());
+app.use(passport.session());
 
 // Connect to MongoDB database
 mongoose.Promise = global.Promise;

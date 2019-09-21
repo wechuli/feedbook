@@ -1,9 +1,18 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-// const User = require('../models/User.model');
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
 
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  let user = await User.findById(id);
+  if (user) {
+    done(null, user);
+  }
+});
 // passport oauth
 passport.use(
   new GoogleStrategy(
