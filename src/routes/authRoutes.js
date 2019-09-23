@@ -25,7 +25,7 @@ router.get("/logout", async (req, res) => {
 
 router.get("/current_user", async (req, res) => {
   console.log(req.user);
-  res.json(req.user);
+  res.json({ user: req.user, session: req.session });
 });
 
 module.exports = router;
