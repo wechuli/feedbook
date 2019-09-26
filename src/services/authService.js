@@ -13,6 +13,7 @@ passport.deserializeUser(async (id, done) => {
     done(null, user);
   }
 });
+console.log(process.env.GOOOGLE_CLIENT_ID);
 // passport oauth
 passport.use(
   new GoogleStrategy(

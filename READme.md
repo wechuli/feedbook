@@ -1,4 +1,3 @@
-**EndPoint** - https://feedbook-backend.herokuapp.com/
 
 ## App User Flow Walkthrough
 
