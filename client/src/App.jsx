@@ -1,7 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-function App() {
+
+const App = () => {
   return (
     <>
       <p>Hi there</p>
@@ -12,6 +13,6 @@ function App() {
       </p>
     </>
   );
-}
+};
 
 export default App;
