@@ -1,3 +1,5 @@
-export default authTypes = {
+const authTypes = {
 
 }
+
+export default authTypes;

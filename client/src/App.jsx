@@ -1,16 +1,20 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-
+import NavBar from "./components/navbar/NavBar";
+import LandingPage from "./pages/landing/LandingPage";
+import DashboardPage from "./pages/dashboard/DashboardPage";
+import NewSurvey from "./pages/newsurvey/NewSurvey";
 
 const App = () => {
   return (
     <>
-      <p>Hi there</p>
-      <p>
-        <a href="/api/auth/google">Sign in With Google</a>
-        <br />
-        Click here to sign in with Google Oauth
-      </p>
+      <NavBar />
+
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/surveys" component={DashboardPage} />
+        <Route path="surveys/new" component={NewSurvey} />
+      </Switch>
     </>
   );
 };
