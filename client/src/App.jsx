@@ -8,9 +8,10 @@ import NewSurvey from "./pages/newsurvey/NewSurvey";
 import { fetchUser } from "./redux/auth/auth.actions";
 
 const App = props => {
-  const { fetchUser } = props;
+  const { fetchUsers } = props;
+  console.log("fetch user", fetchUser);
   useEffect(() => {
-    fetchUser();
+    props.fetchUsers();
   }, []);
   return (
     <>
@@ -28,7 +29,7 @@ const App = props => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUser: () => dispatch(fetchUser)
+    fetchUsers: () => dispatch(fetchUser)
   };
 };
 export default connect(
