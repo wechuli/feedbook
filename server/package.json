@@ -5,10 +5,8 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "server": "env-cmd -f ./config/dev.env nodemon src/index.js",
-    "test": "env-cmd -f ./config/test.env jest --watch --runInBand",
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
+    "test": "env-cmd -f ./config/test.env jest --watch --runInBand"
   },
   "jest": {
     "testEnvironment": "node",
