@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import axios from 'axios';
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./components/navbar/NavBar";
