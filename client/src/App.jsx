@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./components/navbar/NavBar";
@@ -10,9 +10,8 @@ import { fetchUser } from "./redux/auth/auth.actions";
 
 const App = props => {
   const { fetchUsers } = props;
-  console.log("fetch user", fetchUser);
   useEffect(() => {
-    props.fetchUsers();
+    fetchUsers();
   }, []);
   return (
     <>
@@ -30,7 +29,7 @@ const App = props => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUsers: () => dispatch(fetchUser)
+    fetchUsers: () => dispatch(fetchUser())
   };
 };
 export default connect(
